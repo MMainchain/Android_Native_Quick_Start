@@ -4,19 +4,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-
-
 import com.mainchain.mael.android_native_quick_start.BooksFragment.OnListFragmentInteractionListener
-import com.mainchain.mael.android_native_quick_start.dummy.DummyContent.DummyItem
 import com.mainchain.mael.android_native_quick_start.entities.Book
-
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_book_element.view.*
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- */
 class MyBookRecyclerViewAdapter(
         private val mValues: List<Book>,
         private val mListener: OnListFragmentInteractionListener?)
@@ -41,7 +35,9 @@ class MyBookRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.title
+        holder.itemTitle.text = item.title
+        Picasso.get().load(item.cover).into(holder.itemCover)
+        holder.itemPrice.text = "Prix : " + item.price + "€"
 
         with(holder.mView) {
             tag = item
@@ -52,7 +48,9 @@ class MyBookRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
+        val itemTitle: TextView = mView.item_title
+        val itemCover: ImageView = mView.item_cover
+        val itemPrice: TextView = mView.item_price
 
         override fun toString(): String {
             return super.toString() + " '"+"'"
