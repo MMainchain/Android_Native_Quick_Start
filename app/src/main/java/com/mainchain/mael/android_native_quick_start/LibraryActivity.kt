@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import com.mainchain.mael.android_native_quick_start.entities.Book
 import com.mainchain.mael.android_native_quick_start.fragment.BookFragment
 import com.mainchain.mael.android_native_quick_start.fragment.BooksFragment
+import com.mainchain.mael.android_native_quick_start.fragment.EmptyFragment
 
 class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentInteractionListener {
 
@@ -24,7 +25,7 @@ class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentIntera
 
         if (landscape) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.containerFrameLayout2, BookFragment())
+                    .replace(R.id.containerFrameLayout2, EmptyFragment())
                     .commit()
             findViewById<FrameLayout>(R.id.containerFrameLayout2).visibility = View.VISIBLE
         }
