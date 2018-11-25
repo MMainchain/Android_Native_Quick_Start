@@ -1,4 +1,4 @@
-package com.mainchain.mael.android_native_quick_start
+package com.mainchain.mael.android_native_quick_start.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mainchain.mael.android_native_quick_start.adapter.MyBookRecyclerViewAdapter
+import com.mainchain.mael.android_native_quick_start.R
 import com.mainchain.mael.android_native_quick_start.api.BooksAPI
 import com.mainchain.mael.android_native_quick_start.entities.Book
-import timber.log.Timber
 
 /**
  * A fragment representing a list of Items.

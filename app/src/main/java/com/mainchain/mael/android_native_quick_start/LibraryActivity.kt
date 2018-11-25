@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.FrameLayout
 import com.mainchain.mael.android_native_quick_start.entities.Book
+import com.mainchain.mael.android_native_quick_start.fragment.BookFragment
+import com.mainchain.mael.android_native_quick_start.fragment.BooksFragment
 
 class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentInteractionListener {
 

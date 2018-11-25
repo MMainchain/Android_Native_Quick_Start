@@ -1,4 +1,4 @@
-package com.mainchain.mael.android_native_quick_start
+package com.mainchain.mael.android_native_quick_start.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.mainchain.mael.android_native_quick_start.BooksFragment.OnListFragmentInteractionListener
+import com.mainchain.mael.android_native_quick_start.R
+import com.mainchain.mael.android_native_quick_start.fragment.BooksFragment.OnListFragmentInteractionListener
 import com.mainchain.mael.android_native_quick_start.entities.Book
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_book_element.view.*
