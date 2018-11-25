@@ -15,15 +15,20 @@ import com.mainchain.mael.android_native_quick_start.api.BooksAPI
 import com.mainchain.mael.android_native_quick_start.entities.Book
 
 /**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [BooksFragment.OnListFragmentInteractionListener] interface.
+ * Fragment for book list
+ * Handle a list of books
+ * @author Mael MAINCHAIN
  */
 class BooksFragment : Fragment() {
 
-    // TODO: Customize parameters
+    /**
+     * Number of column of the list
+     */
     private var columnCount = 1
 
+    /**
+     * Listener for the action to an element of the list
+     */
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +51,12 @@ class BooksFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 
+                // Request all books
                 BooksAPI.getBooks { apibooks: Array<Book>? -> run {
+                    // Transform the Array into required List
                     var books: MutableList<Book> = mutableListOf()
                     apibooks?.forEach { book -> books.add(book) }
-
+                    // Instantiate the adapter
                     adapter = MyBookRecyclerViewAdapter(books, listener)
                 } }
             }
@@ -72,27 +79,20 @@ class BooksFragment : Fragment() {
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
+     * Interface to be implemented in activity
      */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         fun onListFragmentInteraction(item: Book?)
     }
 
+    /**
+     * Companion object
+     */
     companion object {
 
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
                 BooksFragment().apply {

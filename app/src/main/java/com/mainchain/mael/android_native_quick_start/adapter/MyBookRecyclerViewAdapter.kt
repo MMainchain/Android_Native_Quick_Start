@@ -12,6 +12,12 @@ import com.mainchain.mael.android_native_quick_start.entities.Book
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_book_element.view.*
 
+/**
+ * Adapter for RecyclerView
+ * Used in BooksFragment
+ * Handle a list of books
+ * @author Mael MAINCHAIN
+ */
 class MyBookRecyclerViewAdapter(
         private val mValues: List<Book>,
         private val mListener: OnListFragmentInteractionListener?)
@@ -22,8 +28,6 @@ class MyBookRecyclerViewAdapter(
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as Book
-            // Notify the active callbacks interface (the activity, if the fragment is attached to
-            // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
         }
     }
@@ -35,6 +39,7 @@ class MyBookRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // Fill view fields with Book's attributes
         val item = mValues[position]
         holder.itemTitle.text = item.title
         Picasso.get().load(item.cover).into(holder.itemCover)
@@ -49,6 +54,7 @@ class MyBookRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+        // Get all the attributes in view to fill with Book attributes
         val itemTitle: TextView = mView.item_title
         val itemCover: ImageView = mView.item_cover
         val itemPrice: TextView = mView.item_price

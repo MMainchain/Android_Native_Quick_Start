@@ -7,6 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.mainchain.mael.android_native_quick_start.R
 
+/**
+ * Fragment for the empty part of the activity
+ * Basically show nothing but a text in the center of the view
+ * to indicate the user for what to do
+ * @author Mael MAINCHAIN
+ */
 class EmptyFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
