@@ -7,25 +7,17 @@
     android:orientation="horizontal"
     tools:context=".LibraryActivity">
 
-    <!--<android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>-->
-
     <FrameLayout
         android:id="@+id/containerFrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:background="@color/colorAccent"></FrameLayout>
+        android:layout_weight="1"></FrameLayout>
 
     <FrameLayout
         android:id="@+id/containerFrameLayout2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:visibility="gone"
-        tools:background="@color/colorPrimary"></FrameLayout>
+        android:visibility="gone"></FrameLayout>
 
 </LinearLayout>

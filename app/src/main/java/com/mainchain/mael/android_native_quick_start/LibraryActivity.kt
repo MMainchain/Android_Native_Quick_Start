@@ -2,16 +2,11 @@ package com.mainchain.mael.android_native_quick_start
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.FrameLayout
 import com.mainchain.mael.android_native_quick_start.entities.Book
 
 class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentInteractionListener {
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +18,7 @@ class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentIntera
                 .replace(R.id.containerFrameLayout, BooksFragment())
                 .commit()
 
-        findViewById<FrameLayout>(R.id.containerFrameLayout2).visibility = View.INVISIBLE
+        findViewById<FrameLayout>(R.id.containerFrameLayout2).visibility = View.GONE
 
         if (landscape) {
             supportFragmentManager.beginTransaction()
@@ -34,10 +29,36 @@ class LibraryActivity  : AppCompatActivity(), BooksFragment.OnListFragmentIntera
     }
 
     override fun onListFragmentInteraction(book: Book?) {
+        if (!resources.getBoolean(R.bool.landscape)) {
+            showElement()
+        }
         val b = BookFragment()
-        b.setBook(book);
+        b.setBook(book)
         supportFragmentManager.beginTransaction()
                 .replace(R.id.containerFrameLayout2, b)
                 .commit()
+    }
+
+    override fun onBackPressed() {
+        if(!resources.getBoolean(R.bool.landscape) &&
+                findViewById<FrameLayout>(R.id.containerFrameLayout2).visibility == View.VISIBLE) {
+            showList()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    fun showList() {
+        var list = findViewById<FrameLayout>(R.id.containerFrameLayout)
+        var element = findViewById<FrameLayout>(R.id.containerFrameLayout2)
+        list.visibility = View.VISIBLE
+        element.visibility = View.GONE
+    }
+
+    fun showElement() {
+        var list = findViewById<FrameLayout>(R.id.containerFrameLayout)
+        var element = findViewById<FrameLayout>(R.id.containerFrameLayout2)
+        list.visibility = View.GONE
+        element.visibility = View.VISIBLE
     }
 }

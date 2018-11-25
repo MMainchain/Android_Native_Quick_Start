@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_book_element.view.*
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
  * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
  */
 class MyBookRecyclerViewAdapter(
         private val mValues: List<Book>,
@@ -43,7 +42,6 @@ class MyBookRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.mIdView.text = item.title
-        holder.mContentView.text = item.cover
 
         with(holder.mView) {
             tag = item
@@ -55,10 +53,9 @@ class MyBookRecyclerViewAdapter(
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '"+"'"
         }
     }
 }

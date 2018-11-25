@@ -6,8 +6,7 @@
     android:name="com.mainchain.mael.android_native_quick_start.BookFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
     tools:context=".BooksFragment"
-    tools:listitem="@layout/fragment_book_element" />
+    tools:listitem="@layout/fragment_book_element"
+    android:background="#FF0000"/>

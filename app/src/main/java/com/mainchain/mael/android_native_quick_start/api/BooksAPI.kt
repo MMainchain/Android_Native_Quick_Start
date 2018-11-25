@@ -1,5 +1,6 @@
 package com.mainchain.mael.android_native_quick_start.api
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,10 +13,10 @@ public class BooksAPI {
 
     companion object {
 
-        val BASE_URI = "http://henri-potier.xebia.fr/";
+        val BASE_URI = "http://henri-potier.xebia.fr/"
 
         @JvmStatic
-        fun getBooks() {
+        fun getBooks(callback: (Array<Book>?) -> Unit) {
             val retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URI)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -25,12 +26,14 @@ public class BooksAPI {
 
             api.listBooks().enqueue(object : Callback<Array<Book>> {
                 override fun onFailure(call: Call<Array<Book>>, t: Throwable) {
-                    println("FAILURE")
+                    Log.e("APPLICATION", t.message);
                 }
 
                 override fun onResponse(call: Call<Array<Book>>,
                                         response: Response<Array<Book>>) {
-                    response.body()?.forEach { book -> println(book.title) }
+
+                    Log.e("APPLICATION", "Data dowloaded");
+                    callback(response.body())
                 }
             })
         }

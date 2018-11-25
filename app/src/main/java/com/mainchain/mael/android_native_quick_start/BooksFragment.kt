@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mainchain.mael.android_native_quick_start.api.BooksAPI
 import com.mainchain.mael.android_native_quick_start.entities.Book
+import timber.log.Timber
 
 /**
  * A fragment representing a list of Items.
@@ -43,12 +46,12 @@ class BooksFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 
-                val b1 = Book("isbn", "title", "price", "cover")
-                // val b2 = Book("isbn2", "title2", "price2", "cover2")
+                BooksAPI.getBooks { apibooks: Array<Book>? -> run {
+                    var books: MutableList<Book> = mutableListOf()
+                    apibooks?.forEach { book -> books.add(book) }
 
-                val books = listOf(b1);
-
-                adapter = MyBookRecyclerViewAdapter(books, listener)
+                    adapter = MyBookRecyclerViewAdapter(books, listener)
+                } }
             }
         }
         return view
